@@ -1,6 +1,6 @@
 ﻿namespace Mini_Download_Manager
 {
-    partial class Form1
+    partial class DownloaderForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -74,7 +74,7 @@
             FileIconBox.Visible = false;
             FileIconBox.Click += pictureBox1_Click;
             // 
-            // Form1
+            // DownloaderForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -83,8 +83,8 @@
             Controls.Add(FileNameLabel);
             Controls.Add(label1);
             Controls.Add(DownloadButton);
-            Name = "Form1";
-            Text = "Form1";
+            Name = "DownloaderForm";
+            Text = "Mini Downloader Manager";
             Load += Form1_Load_1;
             ((System.ComponentModel.ISupportInitialize)FileIconBox).EndInit();
             ResumeLayout(false);
