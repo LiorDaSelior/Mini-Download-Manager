@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mini_Download_Manager.Service.Fetcher
+namespace Mini_Download_Manager.Service
 {
     internal record ResponseFile(
         string Title,
