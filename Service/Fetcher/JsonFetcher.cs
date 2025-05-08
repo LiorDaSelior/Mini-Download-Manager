@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,11 +16,9 @@ namespace Mini_Download_Manager.Service.Fetcher
             client = new HttpClient();
         }
 
-        public async Task<String> fetch(String url)
+        public async Task<List<ResponseFile>> fetch(String url)
         {
-            HttpResponseMessage response = await client.GetAsync(url);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsStringAsync();
+            return await client.GetFromJsonAsync<List<ResponseFile>>(url);
         }
     }
 }
