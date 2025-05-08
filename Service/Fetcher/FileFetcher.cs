@@ -31,7 +31,7 @@ namespace Mini_Download_Manager.Service.Fetcher
             var response = await client.GetAsync(responseFile.FileUrl);
             response.EnsureSuccessStatusCode();
 
-            var newFilePath = path + "/" + Path.GetFileName(responseFile.FileUrl);
+            var newFilePath = path + "/" + responseFile.Title + "_" + Path.GetFileName(responseFile.FileUrl);
 
             using (var fs = new FileStream(newFilePath, FileMode.Create))
             {

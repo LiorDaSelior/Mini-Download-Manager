@@ -26,7 +26,6 @@ namespace Mini_Download_Manager
             logic = new FileLogic();
             fileFetcherPath = Application.StartupPath + "/Temp";
             fileFetcher = new FileFetcher(fileFetcherPath);
-            //fileFetcher = new FileFetcher(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/Temp");
         }
 
 
@@ -57,10 +56,7 @@ namespace Mini_Download_Manager
 
             string trgFilePath = await fileFetcher.downloadToPath(trgFile);
 
-            Console.WriteLine(fileFetcherPath);
-            Console.WriteLine(fileFetcherPath);
-
-            Process.Start("explorer.exe", fileFetcherPath);
+            Process.Start("explorer.exe", Path.GetFullPath(fileFetcherPath));
 
             Process.Start(new ProcessStartInfo
             {
