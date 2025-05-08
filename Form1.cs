@@ -12,9 +12,13 @@ namespace Mini_Download_Manager
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            button1.Enabled = false;
+
             var jf = new JsonFetcher();
             string res =  await jf.fetch("https://4qgz7zu7l5um367pzultcpbhmm0thhhg.lambda-url.us-west-2.on.aws/");
             textBox1.Text = res;
+
+            button1.Enabled = true;
         }
     }
 }
