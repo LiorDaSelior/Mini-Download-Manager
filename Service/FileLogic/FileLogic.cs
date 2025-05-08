@@ -20,7 +20,14 @@ namespace Mini_Download_Manager.Service.FileLogic
 
         public ResponseFile getValidHighestScoreFile(List<ResponseFile> fileList)
         {
-            return fileList.Where(validatorFunction).MaxBy(file => file.Score);
+            var result = fileList.Where(validatorFunction).MaxBy(file => file.Score);
+
+            if (result == null)
+            {
+                throw new ServiceException("Issue Retrieveing File!");
+            }
+
+            return result;
         }
     }
 }

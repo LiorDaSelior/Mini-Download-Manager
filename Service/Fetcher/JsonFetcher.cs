@@ -18,7 +18,20 @@ namespace Mini_Download_Manager.Service.Fetcher
 
         public async Task<List<ResponseFile>> fetch(String url)
         {
-            return await client.GetFromJsonAsync<List<ResponseFile>>(url);
+            List<ResponseFile>? response = null;
+            try
+            {
+                response = await client.GetFromJsonAsync<List<ResponseFile>>(url);
+            }
+            catch (HttpRequestException e)
+            {
+                throw new ServiceException("Issue Retrieveing File - " + e.Message);
+            }
+            if (response == null)
+            {
+                throw new ServiceException("Issue Retrieveing File");
+            }
+            return response;
         }
     }
 }

@@ -34,7 +34,17 @@ namespace Mini_Download_Manager
             DownloadButton.Enabled = false;
             FileNameLabel.Text = "Please wait...";
 
-            var res = await jsonFetcher.fetch("https://4qgz7zu7l5um367pzultcpbhmm0thhhg.lambda-url.us-west-2.on.aws/");
+            List<ResponseFile>? res = null;
+
+            try
+            {
+                res = await jsonFetcher.fetch("https://4qgz7zu7l5um367pzultcpbhmm0thhhg.lambda-url.us-west-2.on.aws/");
+            } catch (ServiceException se) 
+            {
+                MessageBox.Show("Error: " + se + "\n" + "Please restart service.");
+                return;
+            }
+
 
             var best = this.logic.getValidHighestScoreFile(res);
 
